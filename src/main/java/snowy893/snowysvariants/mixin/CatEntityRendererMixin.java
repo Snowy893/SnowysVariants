@@ -11,11 +11,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(CatRenderer.class)
 public class CatEntityRendererMixin {
-    @Unique private static final ResourceLocation ALIEN_TEXTURE = getVariantTexture("alien");
-    @Unique private static final ResourceLocation GAMORA_TEXTURE = getVariantTexture("gamora");
-    
-    public CatEntityRendererMixin() {
-    }
+    @Unique private static final ResourceLocation ALIEN_TEXTURE = snowysVariants$getVariantTexture("alien");
+    @Unique private static final ResourceLocation GAMORA_TEXTURE = snowysVariants$getVariantTexture("gamora");
     
     @Inject(
             method = {"getTextureLocation(Lnet/minecraft/world/entity/animal/Cat;)Lnet/minecraft/resources/ResourceLocation;"},
@@ -32,7 +29,7 @@ public class CatEntityRendererMixin {
     
     @SuppressWarnings("removal")
     @Unique
-    private static ResourceLocation getVariantTexture(String name) {
+    private static ResourceLocation snowysVariants$getVariantTexture(String name) {
         return new ResourceLocation("textures/entity/cat/"+name+".png");
     }
 }

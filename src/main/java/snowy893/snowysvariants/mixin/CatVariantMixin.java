@@ -17,14 +17,14 @@ public abstract class CatVariantMixin {
     private static ResourceKey<CatVariant> createKey(String pName) { return null; }
     
     @Unique
-    private static final ResourceKey<CatVariant> snowysVariants$ALIEN = createKey("alien");
+    private static final ResourceKey<CatVariant> ALIEN = createKey("alien");
     
     @Inject(method = {"bootstrap"}, at = {@At("RETURN")})
     private static void bootstrap(Registry<CatVariant> pRegistry, CallbackInfoReturnable<CatVariant> cir) {
-        register(pRegistry, snowysVariants$ALIEN, "alien");
+        register(pRegistry, ALIEN, "alien");
     }
     
-    @Unique
+    @SuppressWarnings("removal") @Unique
     private static void register(Registry<CatVariant> pRegistry, ResourceKey<CatVariant> pKey, String name) {
         Registry.register(pRegistry, pKey, new CatVariant(new ResourceLocation("textures/entity/cat/"+name+".png")));
     }
