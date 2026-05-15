@@ -15,9 +15,13 @@ base {
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
-
 renamer.enableMixinRefmaps {
     config "${mod_id}.mixins.json"
+    source(sourceSets.main) {
+        refMap = "mixins.${mod_id}.refmap.json"
+    }
+    jar(tasks.named('jar') as TaskProvider<Jar>)
+    minecraft.runs.each { run -> run(run) }
 }
 renamer.classes(tasks.named('jar', Jar)) {
     archiveClassifier = 'srg'
@@ -193,7 +197,7 @@ tasks.named('jar', Jar) {
                 'Implementation-Title'    : project.name,
                 'Implementation-Version'  : project.jar.archiveVersion,
                 'Implementation-Vendor'   : mod_authors,
-                'MixinConfigs'            : "${mod_id}.mixins.json"
+                // 'MixinConfigs'            : "${mod_id}.mixins.json"
         ])
     }
 
