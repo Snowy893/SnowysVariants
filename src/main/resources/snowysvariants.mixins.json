@@ -3,12 +3,9 @@
   "package": "snowy893.snowysvariants.mixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "mixins.snowysvariants.refmap.json",
-  "mixins": [
-    "TurtleMixin"
-  ],
+  "mixins": [],
   "client": [
-    "CatRendererMixin",
-    "TurtleRendererMixin"
+    "CatRendererMixin"
   ],
   "minVersion": "0.8.5"
 }
